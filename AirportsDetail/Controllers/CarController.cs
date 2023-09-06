@@ -76,6 +76,7 @@ namespace CarRental.Controllers
             {
                 if (item.Username == k && item.Password == p)
                 {
+                    HttpContext.Session.SetString("u", item.Username);
                    // Session["u"] = k;
                     TempData["u2"] = k;
                     k1 = true;
@@ -232,6 +233,7 @@ namespace CarRental.Controllers
         {
             string k = TempData["u2"].ToString();
             ViewBag.Message = "admin" + " " + k;
+            HttpContext.Session.Clear();
            // Session["u"] = null;
             //Session.Abandon();
             return RedirectToAction("AdminLogin");

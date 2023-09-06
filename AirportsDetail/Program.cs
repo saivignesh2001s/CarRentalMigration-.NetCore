@@ -16,6 +16,8 @@ namespace AirportsDetail
             builder.Services.AddTransient<ICustomerDAL, CustomerDAL>();
             builder.Services.AddTransient<IRentDAL, RentDAL>(); 
             builder.Services.AddMvcCore();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession();
             // Add services to the container.
             builder.Services.AddRazorPages();
 
@@ -33,13 +35,14 @@ namespace AirportsDetail
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
             app.MapRazorPages();
             app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Car}/{action=AdminLogin}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
