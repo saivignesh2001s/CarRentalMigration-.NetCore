@@ -13,16 +13,18 @@ namespace CarRental.Controllers
         private readonly IRentDAL rd;
         private readonly ICustomerDAL csdal;
         private readonly ICarDAL cdal;
+        private readonly IHostEnvironment env;
         
       
       
         
-        public CarController(DbContextclass cd,IRentDAL rd,ICustomerDAL csdal,ICarDAL cdal)
+        public CarController(DbContextclass cd,IRentDAL rd,ICustomerDAL csdal,ICarDAL cdal,IHostEnvironment env)
         {
             this.cdal = cdal;
             this.cd = cd;
             this.csdal = csdal;
             this.rd = rd;
+            this.env = env;
         }
         public ActionResult EmpIndex()
         {
@@ -129,7 +131,7 @@ namespace CarRental.Controllers
                 cd.ChargePerKm = c.ChargePerKm;
                 cd.Cartype = Request.Form["CarType"];
                 cd.Available = c.Available;
-                string k = "~/wwwroot/images/";
+                string k = "~/images/";
                 cd.Photo = k + c.Photo;
                 cdal.addcar(cd);
                 return RedirectToAction("Index");
