@@ -12,10 +12,10 @@ namespace CarRental.ModelforController
         public int RentId { get; set; }
         public Nullable<int> CarId { get; set; }
         public Nullable<int> CustomerId { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime RentOrderDate { get; set; }
         public Nullable<int> OdoReading { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
 
         public DateTime ReturnDate { get; set; }
 

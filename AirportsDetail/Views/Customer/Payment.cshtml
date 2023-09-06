@@ -1,0 +1,61 @@
+﻿@model CarRental.ModelforController.Cost
+
+@{
+    ViewBag.Title = "Payment";
+}
+
+<h2>Payment</h2>
+<table class="table table-responsive">
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Rentid)</td>
+        <td>
+            @Html.DisplayFor(model => model.Rentid)
+        </td>
+
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.KmsCovered)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.KmsCovered)
+        </td>
+
+
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.Price)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Price)
+        </td>
+
+
+    </tr>
+
+
+
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.tax)
+        </td>
+        <td> @Html.DisplayFor(model => model.tax)</td>
+    </tr>
+
+
+
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.TotalCost)</td>
+
+        <td> @Html.DisplayFor(model => model.TotalCost)</td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Apply Discount", "ApplyDiscount10", new {id=Model.Rentid}) ||
+    @Html.ActionLink("Card", "Successful") ||
+    @Html.ActionLink("Cash", "Successful") ||
+    @Html.ActionLink("NetBanking", "Successful")
+</p>

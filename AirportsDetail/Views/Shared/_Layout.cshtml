@@ -28,7 +28,7 @@
                             <a class="nav-link text-dark" asp-controller="Car" asp-action="AdminLogin">Admin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="">Customer</a>
+                            <a class="nav-link text-dark" asp-controller="Customer" asp-action="Login">Customer</a>
                         </li>
                         @if (Context.Session.GetString("u")!=null)
                         {
@@ -36,6 +36,13 @@
                                 <a class="nav-link text-dark" asp-controller="Car" asp-action="preventBack">LogOut</a>
                             </li>
                             
+                        }
+                        @if (Context.Session.GetString("u1") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Car" asp-action="preventBack">LogOut</a>
+                            </li>
+
                         }
                     </ul>
                 </div>
@@ -48,11 +55,6 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - CarRental - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
