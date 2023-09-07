@@ -91,7 +91,7 @@ namespace CarRental.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult forgotpassword(FormCollection c)
+        public ActionResult forgotpassword(IFormCollection c)
         {
             string k = c["Email"].ToString();
             string p = c["Password"].ToString();
@@ -226,8 +226,8 @@ namespace CarRental.Controllers
         {
 
 
-            Customers g = (Customers)TempData["User"];
-            TempData["User"] = g;
+            Customers g = JsonConvert.DeserializeObject<Customers>(TempData["User"].ToString());
+            TempData["User"] =JsonConvert.SerializeObject(g);
             int id = g.Customerid;
             Customers k = cd.GetCustomer(id);
 
@@ -569,6 +569,10 @@ namespace CarRental.Controllers
             ViewData["status"] = p;
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
+        }
+        public IActionResult errorModel(CustomException cs)
+        {
+            return View(cs);
         }
 
     }

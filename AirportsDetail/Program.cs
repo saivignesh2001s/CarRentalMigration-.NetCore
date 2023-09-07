@@ -14,7 +14,8 @@ namespace AirportsDetail
             builder.Services.AddDbContext<DbContextclass>(options => options.UseSqlServer(string1));
             builder.Services.AddTransient<ICarDAL, CarDAL>();
             builder.Services.AddTransient<ICustomerDAL, CustomerDAL>();
-            builder.Services.AddTransient<IRentDAL, RentDAL>(); 
+            builder.Services.AddTransient<IRentDAL, RentDAL>();
+           builder.Services.AddSingleton<ExceptionHandler>();
             builder.Services.AddMvcCore();
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession();
@@ -30,13 +31,14 @@ namespace AirportsDetail
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+           
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
             app.UseSession();
-
+            app.UseMiddleware<ExceptionHandler>();
             app.UseAuthorization();
 
             app.MapRazorPages();
